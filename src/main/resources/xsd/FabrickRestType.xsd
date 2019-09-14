@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="it:rest:common"
+        xmlns:userns="it:rest:common"
+        elementFormDefault="qualified"
+        xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+        jaxb:version="2.1"
+       >
+
+    <complexType name="Status">
+        <sequence>
+            <element name="code" type="string" />
+            <element name="description" type="string" />
+        </sequence>
+    </complexType>
+
+    <complexType name="Error">
+        <sequence>
+            <element name="description" type="string"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="AccountBalance">
+        <sequence>
+            <element name="date" type="string" />
+            <element name="balance" type="string"/>
+            <element name="availableBalance" type="string" />
+        </sequence>
+    </complexType>
+
+    <!-- Operazione: Lettura saldo -->
+    <complexType name="ResponseAccountBalance">
+        <sequence>
+            <element name="status"  type="userns:Status" />
+            <element name="error"   type="userns:Error"/>
+            <element name="payload" type="userns:AccountBalance" maxOccurs="unbounded">
+                <annotation>
+                    <appinfo>
+                        <jaxb:property name="payload"/>
+                    </appinfo>
+                </annotation>
+            </element>
+        </sequence>
+    </complexType>
+
+    <!-- Operazione Bonifico -->
+
+    <complexType name="Amount">
+        <sequence>
+            <element name="receiverAmount" type="string"/>
+            <element name="receiverCurrency" type="string"/>
+            <element name="exchangeRate" type="string"/>
+        </sequence>
+    </complexType>
+
+    <simpleType name="FeeType">
+        <restriction base="string">
+            <enumeration value="SHA"/>
+            <enumeration value="OUR"/>
+            <enumeration value="BEN"/>
+        </restriction>
+    </simpleType>
+
+    <complexType name="Fees">
+        <sequence>
+            <element name="amount" type="string"/>
+            <element name="currency" type="string"/>
+            <element name="code" type="string"/>
+            <element name="description" type="string"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="SctOrder">
+        <sequence>
+            <element name="orderId" type="string" />
+            <element name="cro" type="string"/>
+            <element name="uri" type="string"/>
+            <element name="amount" type="userns:Amount"/>
+            <element name="feeType" type="userns:FeeType"/>
+            <element name="fees" type="userns:Fees" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+
+
+    <complexType name="RequestSctOrder">
+        <sequence>
+            <element name="receiverName"  type="string" />
+            <element name="description"  type="string" />
+            <element name="amount"  type="string" />
+            <element name="currency"  type="string" />
+            <element name="executionDate"  type="string" />
+            <element name="feeType"  type="string" default=""/>
+            <element name="urgent"  type="string" minOccurs="0"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="ResponseSctOrder">
+        <sequence>
+            <element name="status"  type="userns:Status" />
+            <element name="error"   type="userns:Error"/>
+            <element name="payload" type="userns:SctOrder" maxOccurs="unbounded">
+                <annotation>
+                    <appinfo>
+                        <jaxb:property name="payload"/>
+                    </appinfo>
+                </annotation>
+            </element>
+        </sequence>
+    </complexType>
+
+</schema>

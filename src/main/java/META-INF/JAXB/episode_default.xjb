@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bindings version="2.1" xmlns="http://java.sun.com/xml/ns/jaxb">
+  <!--
+
+Questo file è stato generato dall'architettura JavaTM per XML Binding (JAXB) Reference Implementation, v2.3.2 
+Vedere <a href="https://javaee.github.io/jaxb-v2/">https://javaee.github.io/jaxb-v2/</a> 
+Qualsiasi modifica a questo file andrà persa durante la ricompilazione dello schema di origine. 
+Generato il: 2019.09.13 alle 11:04:57 PM CEST 
+
+  -->
+  <bindings scd="x-schema::tns" xmlns:tns="it:rest:common">
+    <schemaBindings map="false">
+      <package name="it.rest.common"/>
+    </schemaBindings>
+    <bindings scd="~tns:Status">
+      <class ref="it.rest.common.Status"/>
+    </bindings>
+    <bindings scd="~tns:Error">
+      <class ref="it.rest.common.Error"/>
+    </bindings>
+    <bindings scd="~tns:AccountBalance">
+      <class ref="it.rest.common.AccountBalance"/>
+    </bindings>
+    <bindings scd="~tns:ResponseAccountBalance">
+      <class ref="it.rest.common.ResponseAccountBalance"/>
+    </bindings>
+    <bindings scd="~tns:Amount">
+      <class ref="it.rest.common.Amount"/>
+    </bindings>
+    <bindings scd="~tns:Fees">
+      <class ref="it.rest.common.Fees"/>
+    </bindings>
+    <bindings scd="~tns:SctOrder">
+      <class ref="it.rest.common.SctOrder"/>
+    </bindings>
+    <bindings scd="~tns:RequestSctOrder">
+      <class ref="it.rest.common.RequestSctOrder"/>
+    </bindings>
+    <bindings scd="~tns:ResponseSctOrder">
+      <class ref="it.rest.common.ResponseSctOrder"/>
+    </bindings>
+    <bindings scd="~tns:FeeType">
+      <typesafeEnumClass ref="it.rest.common.FeeType"/>
+    </bindings>
+  </bindings>
+</bindings>
+
